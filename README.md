@@ -1,11 +1,37 @@
-# Dockerized Developerhub Web App
+# 🚀 Dockerized Developerhub Web App
 
-This is a Dockerized version of the Developerhub project.
+A full-stack Node.js application built using Express, MongoDB, Handlebars (HBS), and Bootstrap — fully containerized with Docker and deployed to the cloud via Render.
 
-## 📸 Project Overview
+---
 
-![project overview1](https://user-images.githubusercontent.com/53999266/105471689-078c2280-5cc1-11eb-8b17-57400d90d66c.PNG)  
-![project overview2](https://user-images.githubusercontent.com/53999266/105471729-12df4e00-5cc1-11eb-8457-789abbe72b87.PNG)  
-![project overview3](https://user-images.githubusercontent.com/53999266/105471807-25f21e00-5cc1-11eb-93df-e4f5aa4a51f7.PNG)  
-![project overview4](https://user-images.githubusercontent.com/53999266/105471921-4a4dfa80-5cc1-11eb-9fed-38f7692986ce.PNG)  
-![project overview5](https://user-images.githubusercontent.com/53999266/105471947-533ecc00-5cc1-11eb-88d9-829fff1083dd.PNG)
+## 🌐 Live Demo
+
+🟢 [Visit the Live App](https://dockerized-webapp-bgic.onrender.com)
+
+---
+
+## 📦 Tech Stack
+
+- **Backend:** Node.js, Express.js  
+- **Templating Engine:** HBS (Handlebars)  
+- **Database:** MongoDB with Mongoose  
+- **Frontend:** Bootstrap, jQuery  
+- **Containerization:** Docker  
+- **Deployment:** Render (Docker Runtime)
+
+---
+
+## 🐳 Docker Usage
+
+### ✅ Build the Docker image
+bash
+docker build -t developerhub .
+
+markdown
+### ▶️ Run the containe
+
+```bash
+docker run -p 3000:3000 developerhub
+
+```bash
+docker build -t developerhub .
