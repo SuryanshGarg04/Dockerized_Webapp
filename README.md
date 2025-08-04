@@ -63,17 +63,16 @@ jobs:
           tags: your-dockerhub-username/developerhub:latest
 
 
+
 ## 🐳 Docker Usage
 
 ### ✅ Build the Docker image
-bash
+```bash
 docker build -t developerhub .
 
 markdown
-### ▶️ Run the containe
+### ▶️ Run the container
 
 ```bash
 docker run -p 3000:3000 developerhub
 
-```bash
-docker build -t developerhub .
