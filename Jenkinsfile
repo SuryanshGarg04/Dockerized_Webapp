@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/yourusername/dockerized-webapp.git'
+                git 'https://github.com/SuryanshGarg04/Dockerized_Webapp.git'
             }
         }
 
@@ -14,6 +14,22 @@ pipeline {
                     dockerImage = docker.build('dockerized-webapp')
                 }
             }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Run tests here'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy step here'
+            }
+        }
+    }
+}
+
         }
 
         stage('Test') {
