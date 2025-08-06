@@ -10,21 +10,19 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build('dockerized-webapp')
-                }
+                sh 'docker build -t dockerized-webapp .'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests... (placeholder)'
+                echo 'Tests go here'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying app... (placeholder)'
+                echo 'Deploy step goes here'
             }
         }
     }
