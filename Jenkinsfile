@@ -1,22 +1,32 @@
 pipeline {
-    agent {
-        docker { image 'node:18-alpine' } // Example docker image; change as needed
-    }
+    agent any
+
     stages {
-        stage('Build Docker Image') {
+        stage('Clone Repo') {
             steps {
-                script {
-                    sh 'docker --version'
-                    sh 'docker build -t dockerized-webapp .'
-                }
+                // Checkout your repo
+                git 'https://github.com/SuryanshGarg04/Dockerized_Webapp.git'
             }
         }
 
-        stage('Run Container') {
+        stage('Build') {
             steps {
-                script {
-                    sh 'docker run -d -p 3000:3000 --name webapp dockerized-webapp'
-                }
+                // Simulate a build (in real life you'd do `npm install`, `docker build`, etc.)
+                echo 'Building the project...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Simulate tests
+                echo 'Running tests (placeholder)...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Simulate deploy
+                echo 'Deploying application (placeholder)...'
             }
         }
     }
