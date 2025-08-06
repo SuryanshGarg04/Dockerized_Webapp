@@ -18,29 +18,13 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Run tests here'
+                echo 'Running tests... (placeholder)'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy step here'
-            }
-        }
-    }
-}
-
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Run unit/integration tests here if available.'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'You can push to DockerHub here or run docker run...'
+                echo 'Deploying app... (placeholder)'
             }
         }
     }
