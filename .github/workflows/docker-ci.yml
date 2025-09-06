@@ -2,26 +2,49 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/developerhub
+  APP_DIR: .            # change if your app lives in a subfolder
 
 jobs:
   test-build-push:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.APP_DIR }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: ${{ env.APP_DIR }}/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
       - name: Run Tests
         run: npm test
+        # or if you want CI to pass even with zero tests:
+        # run: npm test -- --passWithNoTests
+
+      - name: Docker metadata (tags & labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+            type=sha
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -33,9 +56,11 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and Push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
-          context: .
+          context: ${{ env.APP_DIR }}
+          # file: ${{ env.APP_DIR }}/Dockerfile   # uncomment if Dockerfile isn’t named “Dockerfile”
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/developerhub:${{ github.sha }}
-          # Also optionally: tags: ...:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # platforms: linux/amd64,linux/arm64   # optional multi-arch
