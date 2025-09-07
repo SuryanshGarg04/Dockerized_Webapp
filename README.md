@@ -1,4 +1,6 @@
 🚀 Dockerized DeveloperHub Web App
+[📄 Project Report](PROJECT_REPORT.md)
+
 
 ![CI](https://github.com/SuryanshGarg04/Dockerized_Webapp/actions/workflows/docker-ci.yml/badge.svg)
 
