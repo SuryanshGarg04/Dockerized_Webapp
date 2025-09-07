@@ -1,5 +1,8 @@
 🚀 Dockerized DeveloperHub Web App
 
+![CI](https://github.com/SuryanshGarg04/Dockerized_Webapp/actions/workflows/docker-ci.yml/badge.svg)
+
+
 A Node.js + Express + MongoDB + Handlebars app, fully containerized with Docker and delivered via a local CI/CD flow:
 
 CI/CD: GitHub Actions → Docker Hub
